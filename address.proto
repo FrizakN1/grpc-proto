@@ -6,6 +6,11 @@ option go_package = "./addresspb";
 service AddressService {
   rpc GetSuggestions(GetSuggestionsRequest) returns (GetSuggestionsResponse);
   rpc GetHouses(GetHousesRequest) returns (GetHousesResponse);
+  rpc GetHouse(GetHouseRequest) returns (Address);
+}
+
+message GetHouseRequest {
+  int32 house_id = 1;
 }
 
 message GetHousesResponse {
