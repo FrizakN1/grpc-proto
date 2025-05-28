@@ -5,6 +5,15 @@ option go_package = "./addresspb";
 
 service AddressService {
   rpc GetSuggestions(GetSuggestionsRequest) returns (GetSuggestionsResponse);
+  rpc GetHouses(GetHousesRequest) returns (GetHousesResponse);
+}
+
+message GetHousesResponse {
+  repeated Address addresses = 1;
+}
+
+message GetHousesRequest {
+  repeated int32 houseIDs = 1;
 }
 
 message GetSuggestionsResponse {
