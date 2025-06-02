@@ -5,6 +5,12 @@ option go_package = "./searchpb";
 
 service SearchNodeService {
   rpc SearchNodes(Search) returns (SearchNodesResponse);
+  rpc IndexNodes(IndexNodesRequest) returns (Empty);
+  rpc IndexNode(Node) returns (Empty);
+}
+
+message IndexNodesRequest {
+  repeated Node nodes = 1;
 }
 
 message Search {
@@ -16,3 +22,16 @@ message Search {
 message SearchNodesResponse {
   repeated int32 nodesIDs = 1;
 }
+
+message Node {
+  int32 id = 1;
+  string name = 2;
+  string zone = 3;
+  string owner = 4;
+  string street_name = 5;
+  string street_type = 6;
+  string house_name = 7;
+  string house_type = 8;
+}
+
+message Empty {}
