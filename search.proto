@@ -32,6 +32,8 @@ message Node {
   string street_type = 6;
   string house_name = 7;
   string house_type = 8;
+  string type = 9;
+  bool is_delete = 10;
 }
 
 message Empty {}
