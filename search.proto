@@ -7,6 +7,38 @@ service SearchService {
   rpc SearchNodes(SearchNodesRequest) returns (SearchNodesResponse);
   rpc IndexNodes(IndexNodesRequest) returns (Empty);
   rpc IndexNode(Node) returns (Empty);
+
+  rpc SearchHardware(SearchHardwareRequest) returns (SearchHardwareResponse);
+  rpc IndexHardware(IndexHardwareRequest) returns (Empty);
+  rpc IndexHardwareSingle(Hardware) returns (Empty);
+}
+
+message IndexHardwareRequest {
+  repeated Hardware hardware = 1;
+}
+
+message SearchHardwareResponse {
+  repeated int32 hardwareIDs = 1;
+  int32 total = 2;
+}
+
+message SearchHardwareRequest {
+  Search search = 1;
+  SearchHardwareFilter search_filter = 2;
+}
+
+message SearchHardwareFilter {
+  bool use_is_delete = 1;
+  bool is_delete = 2;
+}
+
+message Hardware {
+  int32 id = 1;
+  string type = 2;
+  string node_name = 3;
+  string model_name = 4;
+  string ip_address = 5;
+  Address address = 6;
 }
 
 message IndexNodesRequest {
@@ -33,7 +65,7 @@ message SearchNodeFilter {
 
 message SearchNodesResponse {
   repeated int32 nodesIDs = 1;
-  int32 count = 2;
+  int32 total = 2;
 }
 
 message Node {
@@ -41,13 +73,17 @@ message Node {
   string name = 2;
   string zone = 3;
   string owner = 4;
-  string street_name = 5;
-  string street_type = 6;
-  string house_name = 7;
-  string house_type = 8;
-  string type = 9;
-  bool is_passive = 10;
-  bool is_delete = 11;
+  Address address = 5;
+  string type = 6;
+  bool is_passive = 7;
+  bool is_delete = 8;
+}
+
+message Address {
+  string street_name = 1;
+  string street_type = 2;
+  string house_name = 3;
+  string house_type = 4;
 }
 
 message Empty {}
