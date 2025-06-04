@@ -39,6 +39,7 @@ message Hardware {
   string model_name = 4;
   string ip_address = 5;
   Address address = 6;
+  bool is_delete = 7;
 }
 
 message IndexNodesRequest {
