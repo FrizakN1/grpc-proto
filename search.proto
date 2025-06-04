@@ -33,6 +33,7 @@ message SearchNodeFilter {
 
 message SearchNodesResponse {
   repeated int32 nodesIDs = 1;
+  int32 count = 2;
 }
 
 message Node {
