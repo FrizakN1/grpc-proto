@@ -3,7 +3,7 @@ syntax = "proto3";
 package search;
 option go_package = "./searchpb";
 
-service SearchNodeService {
+service SearchService {
   rpc SearchNodes(SearchNodesRequest) returns (SearchNodesResponse);
   rpc IndexNodes(IndexNodesRequest) returns (Empty);
   rpc IndexNode(Node) returns (Empty);
