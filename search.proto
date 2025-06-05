@@ -11,6 +11,19 @@ service SearchService {
   rpc SearchHardware(SearchHardwareRequest) returns (SearchHardwareResponse);
   rpc IndexHardware(IndexHardwareRequest) returns (Empty);
   rpc IndexHardwareSingle(Hardware) returns (Empty);
+
+  rpc SearchAddresses(Search) returns (SearchAddressesResponse);
+  rpc IndexAddresses(IndexAddressesRequest) returns (Empty);
+  rpc IndexAddress(Address) returns (Empty);
+}
+
+message IndexAddressesRequest {
+  repeated Address addresses = 1;
+}
+
+message SearchAddressesResponse {
+  repeated int32 housesIDs = 1;
+  int32 total = 2;
 }
 
 message IndexHardwareRequest {
