@@ -98,6 +98,7 @@ message Address {
   string street_type = 2;
   string house_name = 3;
   string house_type = 4;
+  int32 house_id = 5;
 }
 
 message Empty {}
