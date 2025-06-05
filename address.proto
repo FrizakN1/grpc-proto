@@ -4,7 +4,7 @@ package address;
 option go_package = "./addresspb";
 
 service AddressService {
-  rpc GetSuggestions(GetSuggestionsRequest) returns (GetSuggestionsResponse);
+  rpc SearchAddresses(SearchAddressesRequest) returns (SearchAddressesResponse);
   rpc GetAddresses(GetAddressesRequest) returns (GetAddressesResponse);
   rpc GetAddress(GetAddressRequest) returns (Address);
 }
@@ -21,12 +21,12 @@ message GetAddressesRequest {
   repeated int32 houseIDs = 1;
 }
 
-message GetSuggestionsResponse {
+message SearchAddressesResponse {
   repeated Address addresses = 1;
-  int32 count = 2;
+  int32 total = 2;
 }
 
-message GetSuggestionsRequest {
+message SearchAddressesRequest {
   string search = 1;
   uint32 offset = 2;
   uint32 limit = 3;
